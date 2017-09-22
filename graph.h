@@ -114,6 +114,6 @@ class Graph{
 	//	srand((int)time(0));
     	printf("%d %d\n",node_num,edge_num);
     	for(register int i=node_num;i>=2;--i)
-        	printf("1 %d %d\n%d %d 1\n",i,(n-i+1)*2+1,i,i-1);
+        	printf("1 %d %d\n%d %d 1\n",i,(node_num-i+1)*2+1,i,i-1);
 	}
 };
