@@ -32,6 +32,7 @@ class Graph{
 	bool w[MAX_NODE_NUM][MAX_NODE_NUM];
 	inline int find(int x) {return father[x]=x==father[x]?x:find(father[x]);}
 	public:
+	//树
 	void tree(int node_num,int edge_weight_max,int edge_num_limit) {
 	//if edge_num_limit->1-->a chain ,if edge_num_limit->2-->a binary_tree,if edge_num_limit->0-->a normal tree
 		srand((int)time(0));
@@ -50,6 +51,7 @@ class Graph{
 			cnt++;
 		}
 	}
+	//强连通图
 	void diagram(int node_num,int edge_num,int edge_weight_max,bool directed) {//Must be strong connectivity
 		srand((int)time(0));
 		cout<<node_num<<" "<<edge_num<<endl;
@@ -75,6 +77,7 @@ class Graph{
 			printf("%d %d %d\n",u,v,val);
 		}
 	}
+	//图
 	void graph(int node_num,int edge_num,int edge_weight_max,bool directed) {
 		srand((int)time(0));
 		cout<<node_num<<" "<<edge_num<<endl;
@@ -89,19 +92,28 @@ class Graph{
 			printf("%d %d %d\n",u,v,val);
 		}
 	}
+	//菊花图
 	void flower(int node_num,int edge_weigh_max,bool directed)
 	{
 		srand((int)time(0));
 		register int edge_num=node_num-1;
 		cout<<node_num<<" "<<edge_num<<endl;
+		register int from=rand()%node_num+1;
 		for(register int i=1;i<=edge_num;++i)
 		{
-			register int u=1,v=rand()%node_num+1;
+			register int u=from,v=rand()%node_num+1;
 			while(w[u][v]||u==v)v=rand()*rand()%node_num+1;
 			register long long val=rand()*rand()%edge_weight_max+1;
 			w[u][v]=1;
 			if(!directed)w[v][u]=1;
 			printf("%d %d %d\n",u,v,val);
 		}
+	}
+	void hack_spfa(int node_num,int edge_num)
+	{
+	//	srand((int)time(0));
+    	printf("%d %d\n",node_num,edge_num);
+    	for(register int i=node_num;i>=2;--i)
+        	printf("1 %d %d\n%d %d 1\n",i,(n-i+1)*2+1,i,i-1);
 	}
 };
