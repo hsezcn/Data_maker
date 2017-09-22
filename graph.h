@@ -89,14 +89,19 @@ class Graph{
 			printf("%d %d %d\n",u,v,val);
 		}
 	}
-	void flower(int node_num)
+	void flower(int node_num,int edge_weigh_max,bool directed)
 	{
 		srand((int)time(0));
-		register int edge_num=node_num;
+		register int edge_num=node_num-1;
 		cout<<node_num<<" "<<edge_num<<endl;
 		for(register int i=1;i<=edge_num;++i)
 		{
-			register int 
+			register int u=1,v=rand()%node_num+1;
+			while(w[u][v]||u==v)v=rand()*rand()%node_num+1;
+			register long long val=rand()*rand()%edge_weight_max+1;
+			w[u][v]=1;
+			if(!directed)w[v][u]=1;
+			printf("%d %d %d\n",u,v,val);
 		}
 	}
 };
